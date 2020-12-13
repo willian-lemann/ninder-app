@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image, View, Text, ActivityIndicator } from 'react-native';
 
+
 import api from '../../services/axios/config';
 
 import { connect, disconnect, listenTo } from '../../services/socket';
