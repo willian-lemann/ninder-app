@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
 import { Feather } from '@expo/vector-icons';
 import { styles } from './styles';
 import backgroundImage from '../../assets/background.png';

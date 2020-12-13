@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { getCurrentPositionAsync } from 'expo-location';
 import * as Permissions from 'expo-permissions';
