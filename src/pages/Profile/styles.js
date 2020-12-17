@@ -69,6 +69,7 @@ export const styles = StyleSheet.create({
       alignSelf: 'flex-end',
       backgroundColor: '#7159c1',
       height: 40,
+      paddingHorizontal:15,
       width: 200,
       borderRadius: 8,
       flexDirection: 'row',

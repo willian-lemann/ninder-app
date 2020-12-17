@@ -49,7 +49,11 @@ const AuthProvider = ({ children }) => {
    }
 
    async function SignUp(data) {
-      await api.post('/auth/register', data);
+      try {
+         await api.post('/auth/register', data);
+      } catch (error) {
+         console.log(error)
+      }
    }
 
    async function SignOut() {

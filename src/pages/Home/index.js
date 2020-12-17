@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View, Text, ActivityIndicator } from 'react-native';
-
-
+import { Image, View, Text } from 'react-native';
+import * as Permissions from 'expo-permissions'
+import { getCurrentPositionAsync } from 'expo-location';
 import api from '../../services/axios/config';
-
 import { connect, disconnect, listenTo } from '../../services/socket';
+
+
 
 import { Feather } from '@expo/vector-icons';
 import avatar from '../../assets/avatar.png';
 import { styles } from './styles';
+
+import MapView, { Marker, Callout } from 'react-native-maps';
 
 const Home = ({ navigation }) => {
    const [users, setUsers] = useState([]);
@@ -69,7 +72,10 @@ const Home = ({ navigation }) => {
 
 
    useEffect(() => {
-      listenTo(newDev => setUsers([...users, newDev.user]));
+      listenTo(newDev => {
+         console.log(newDev)
+         setUsers([...users, newDev.user])
+      });
    }, [users]);
 
    if (!currentRegion) {

@@ -7,11 +7,14 @@ import {
    Platform,
    TextInput,
    ActivityIndicator,
+   Image,
+   Switch
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import { format } from 'date-fns';
 import useAuth from '../../hooks/useAuth';
 
-import { BaseButton } from 'react-native-gesture-handler';
+import { BaseButton, RectButton } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather } from '@expo/vector-icons';
@@ -27,6 +30,33 @@ const Register = () => {
    const [birthday, setBirthDay] = useState(new Date(1598051730000));
    const [show, setShow] = useState(false);
    const [loading, setLoading] = useState(false);
+   const [image, setImage] = useState(null);
+   const [isAmerican, setIsAmerican] = useState(false);
+
+   const HandleToggleSwitch = () => {
+      setIsAmerican(!isAmerican);
+   }
+
+   const HandlePickImage = async () => {
+      const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
+
+      if (status !== 'granted') {
+         alert('Eita, precisamos de acesso às suas fotos...');
+      }
+
+      const result = await ImagePicker.launchImageLibraryAsync({
+         mediaTypes: ImagePicker.MediaTypeOptions.Images,
+         allowsEditing: true,
+         aspect: [4, 3],
+         quality: 1
+      });
+
+      if (result.cancelled) {
+         return;
+      }
+
+      setImage(result.uri)
+   };
 
    const HandleBirthDayChange = (event, selectedDate) => {
       const currentDate = selectedDate || birthday;
@@ -36,22 +66,31 @@ const Register = () => {
 
    const HandleSubmit = async (formData, { reset }) => {
       setLoading(true);
-
-      const data = {
-         ...formData,
-         birthday
-      };
+      console.log(birthday)
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('password', formData.password);
+      data.append('telephone', formData.telephone);
+      data.append('birthday', format(birthday, 'dd/MM/yyyy'));
+      data.append('nationality', isAmerican ? 'Americano' : 'Brasileiro');
+      data.append('image', {
+         name: `image_${Date.now()}`,
+         type: 'image/png',
+         uri: image
+      });
 
       try {
          await SignUp(data);
+         alert('Usuario salvo com sucesso!');
          setLoading(false);
+         reset()
       } catch (error) {
          setLoading(false);
          console.log(error);
       }
-      reset()
    }
- 
+
    const formattedDay = format(birthday, 'dd/MM/yyyy');
 
    return (
@@ -59,6 +98,19 @@ const Register = () => {
          <KeyboardAwareScrollView style={styles.KeyboardAwareScrollView}>
             <Form ref={formRef} onSubmit={HandleSubmit}>
                <View style={styles.inputsContainer}>
+
+                  <View style={styles.imagePickerContainer}>
+                     <RectButton
+                        style={styles.imagePickerButton}
+                        onPress={HandlePickImage}
+                     >
+                        {image ?
+                           <Image source={{ uri: image }} style={styles.image} /> :
+                           <Feather name='user' size={38} />}
+                     </RectButton>
+                     {image === null && <Text style={styles.imagePickerText}>Selecione uma foto</Text>}
+                  </View>
+
                   <Input
                      name='email'
                      type='email'
@@ -79,7 +131,7 @@ const Register = () => {
                      name='name'
                      type='name'
                      style={styles.inputText}
-                     placeholder='Nome'
+                     placeholder='Nome completo'
                      autoCapitalize='words'
                   />
 
@@ -113,6 +165,16 @@ const Register = () => {
                         onChange={HandleBirthDayChange}
                      />
                   )}
+
+                  <View style={styles.switchContainer}>
+                     <Text style={styles.switchText}>Sou Americano</Text>
+                     <Switch
+                        trackColor={{ false: '#f0f0f0', true: '#f0f0f0' }}
+                        thumbColor={isAmerican ? '#7159c1' : '#7159c1'}
+                        onValueChange={HandleToggleSwitch}
+                        value={isAmerican}
+                     />
+                  </View>
                </View>
 
                <View style={styles.buttonContainer}>

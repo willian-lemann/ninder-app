@@ -3,7 +3,7 @@ import envConfig from '../config/envConfig';
 
 const { baseURL } = envConfig;
 
-const socket = socketio(baseURL, {
+const socket = socketio(`${baseURL}`, {
    autoConnect: false,
 });
 

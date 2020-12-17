@@ -13,6 +13,34 @@ export const styles = StyleSheet.create({
       alignItems: 'center'
    },
 
+   imagePickerContainer: {
+      height: 130,
+      width: 350,
+      marginBottom: 10,
+      justifyContent: 'center',
+      alignItems: 'center'
+   },
+
+   imagePickerButton: {
+      backgroundColor: "#f0f0f0",
+      height: 100,
+      width: 100,
+      borderRadius: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+   },
+
+   image: {
+      width: '100%',
+      height: '100%',
+      borderRadius: 100
+   },
+
+   imagePickerText: {
+      fontSize: 18,
+      color: '#f0f0f0'
+   },
+
    inputText: {
       padding: 20,
       marginBottom: 10,
@@ -49,7 +77,7 @@ export const styles = StyleSheet.create({
 
    birthDayIcon: {
       marginRight: 10,
-      color:'#7159c1'
+      color: '#7159c1'
    },
 
    datePicker: {
@@ -60,8 +88,22 @@ export const styles = StyleSheet.create({
       flex: 1
    },
 
+   switchContainer: { 
+      height: 50,
+      width: 350,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-end'
+   },
+
+   switchText: {
+      fontSize: 18,
+      color: '#f0f0f0'
+   },
+
    buttonContainer: {
       marginTop: 30,
+      marginBottom: 30,
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center'
