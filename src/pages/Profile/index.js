@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { format, differenceInYears } from 'date-fns';
 import { View, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import api from '../../services/axios/config';
-
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
    const { params } = useRoute();
    const [user, setUser] = useState(params.user);
-
+   console.log(user)
    const GetFirstName = () => {
       const firstName = user?.name.split(' ')[0];
       return firstName
@@ -21,6 +19,10 @@ const Profile = () => {
    const GetAge = () => {
       const currentDate = Date.now();
       return differenceInYears(new Date(currentDate), new Date(user?.birthday));
+   }
+
+   const HandleChat = () => {
+      navigation.push('Chat', { chatUser: user })
    }
 
    return (
@@ -38,9 +40,10 @@ const Profile = () => {
             <Text style={styles.bio}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus illum harum nemo sunt, quia commodi eius nulla consequatur, odit possimus animi veniam reiciendis quibusdam laborum quod beatae modi temporibus. Vitae.</Text>
 
             <View style={styles.actionButtonContainer}>
-               <TouchableOpacity style={styles.actionButton}>
-                  <Text style={styles.actionText}>Falar com {GetFirstName()}</Text>
-                  <FontAwesome name='whatsapp' size={28} color='#008000' />
+               <TouchableOpacity
+                  onPress={HandleChat}
+                  style={styles.actionButton}>
+                  <Text style={styles.actionText}>Iniciar chat</Text>
                </TouchableOpacity>
             </View>
          </View>

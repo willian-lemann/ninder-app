@@ -1,7 +1,7 @@
-import { baseURL } from '../../.env.json';
+import { API_URL } from '../../.env.json';
 
 const envConfig = {
-   baseURL
+   API_URL
 }
 
 export default envConfig;

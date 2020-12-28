@@ -66,7 +66,7 @@ const Register = () => {
 
    const HandleSubmit = async (formData, { reset }) => {
       setLoading(true);
-      console.log(birthday)
+
       const data = new FormData();
       data.append('name', formData.name);
       data.append('email', formData.email);
@@ -85,6 +85,7 @@ const Register = () => {
          alert('Usuario salvo com sucesso!');
          setLoading(false);
          reset()
+         setImage(null)
       } catch (error) {
          setLoading(false);
          console.log(error);

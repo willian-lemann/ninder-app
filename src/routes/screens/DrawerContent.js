@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { API_URL } from '../../../.env.json';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -18,7 +19,7 @@ const DrawerContent = ({ navigation }) => {
       <View style={styles.container}>
          <View style={styles.userContainer}>
             <View style={styles.userContentContainer}>
-               <Image source={{ uri: `http://192.168.33.108:3333/uploads/${user?.image_url}` }} style={styles.profileImage} />
+               <Image source={{ uri: `${API_URL}/uploads/${user?.image_url}` }} style={styles.profileImage} />
                <Text style={styles.userName}>  {user?.name} </Text>
                <View style={styles.online} />
             </View>

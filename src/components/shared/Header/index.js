@@ -13,12 +13,14 @@ const Header = ({ title }) => {
    return (
       <View style={styles.container}>
          <BorderlessButton onPress={() => navigation.goBack()}>
-            <Feather name='arrow-left' size={24} color='#15b5d6' />
+            <Feather name='arrow-left' size={24} color='#7159c1' />
          </BorderlessButton>
 
          <Text style={styles.titleText}>{title}</Text>
 
-         <View />
+         <BorderlessButton onPress={() => alert('Abriu as infos do usuario')}>
+            <Feather name='more-vertical' size={28} color='#7159c1' />
+         </BorderlessButton>
       </View >
    );
 }

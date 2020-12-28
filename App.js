@@ -9,7 +9,6 @@ import Context from './src/store/context';
 
 const App = () => (
    <>
-      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <NavigationContainer>
          <Context>
             <Routes />

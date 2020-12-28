@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
    container: {
       flex: 1,
-      backgroundColor: '#f2f2f2',
+      backgroundColor: '#fff',
       alignItems: 'center'
    },
 
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 
    userCardContainer: {
       marginTop: 20,
-      backgroundColor: '#fff',
+      backgroundColor: '#f2f2f2',
       width: 350,
       height: 200,
       borderRadius: 10,
@@ -69,13 +69,13 @@ export const styles = StyleSheet.create({
       alignSelf: 'flex-end',
       backgroundColor: '#7159c1',
       height: 40,
-      paddingHorizontal:15,
-      width: 200,
+      paddingHorizontal: 15,
+      width: 150,
       borderRadius: 8,
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       alignItems: 'center',
-      marginRight:10
+      marginRight: 10
    },
 
    actionText: {

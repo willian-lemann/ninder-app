@@ -2,18 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
    container: {
+      backgroundColor:'#fff',
       padding: 24,
-      backgroundColor: '#7159c1',
       borderBottomWidth: 1,
-      borderColor: '#dde3f0',
+      borderColor: '#fff',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center'
    },
 
    titleText: {
-      color: '#8fa7b3',
-      fontSize: 16,
-      fontWeight: 'bold'
+      color: '#7159c1',
+      fontSize: 18,
+      fontWeight: 'bold',
    }
 });

@@ -23,7 +23,7 @@ const Routes = () => {
 
    return (
       <>
-         <StatusBar barStyle='default' backgroundColor='#7159c1' />
+         <StatusBar barStyle='default' backgroundColor='#7159c1'  />
          {signed ? (
             <Suspense
                fallback={<Loading />}>
