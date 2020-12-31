@@ -30,6 +30,16 @@
       "android": {
          "package": "com.willianlemann.ninder",
          "versionCode": 1
-      }
+      },
+      "permissions": [
+         "WRITE_EXTERNAL_STORAGE",
+         "READ_EXTERNAL_STORAGE",
+         "READ_INTERNAL_STORAGE",
+         "CAMERA",
+         "RECORD_AUDIO",
+         "READ_PHONE_STATE",
+         "READ_CONTACTS",
+         "VALIDATE_APP_MESSAGE_NO_FULL_DESCRIPTION"
+      ]
    }
 }
