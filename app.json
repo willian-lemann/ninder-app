@@ -24,10 +24,12 @@
       ],
       "ios": {
          "supportsTablet": true,
-         "bundleIdentifier": "com.willianlemann.ninder"
+         "bundleIdentifier": "com.willianlemann.ninder",
+         "buildNumber": "1.0.0"
       },
       "android": {
-         "package": "com.willianlemann.ninder"
+         "package": "com.willianlemann.ninder",
+         "versionCode": 1
       }
    }
 }
